@@ -35,6 +35,21 @@ public class Persona {
         System.out.println(this.nombre + " está caminando " + distancia + " metros a " + destino + " ...");
     }
 
+    public int distanciaCaminada(){
+        return 0;
+    }
+
+    public int distanciaCaminada(String destino){
+        return 0;
+    }
+
+    public void distanciaCaminada(int distancia, String destino){
+
+    }
+    public void distanciaCaminada(String xcosa, int distancia){
+
+    }
+
     // encapsulamiento
     // getters y setters
     // getters: GET => obtener
