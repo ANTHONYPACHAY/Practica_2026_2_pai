@@ -1,4 +1,4 @@
-package org.example.transferencia;
+package org.example.poo.transferencia;
 
 public class TransferenciaBancaria {
     // atributos

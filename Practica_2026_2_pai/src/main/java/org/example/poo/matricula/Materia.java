@@ -1,4 +1,4 @@
-package org.example.matriculaLista;
+package org.example.poo.matricula;
 
 public class Materia {
     private String nombre;

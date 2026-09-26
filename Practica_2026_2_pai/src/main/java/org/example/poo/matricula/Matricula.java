@@ -1,7 +1,4 @@
-package org.example.matricula;
-
-import java.util.ArrayList;
-import java.util.List;
+package org.example.poo.matricula;
 
 public class Matricula {
 

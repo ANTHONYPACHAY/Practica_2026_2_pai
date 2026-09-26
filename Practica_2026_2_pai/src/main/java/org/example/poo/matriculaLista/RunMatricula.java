@@ -1,4 +1,4 @@
-package org.example.matriculaLista;
+package org.example.poo.matriculaLista;
 
 public class RunMatricula {
 

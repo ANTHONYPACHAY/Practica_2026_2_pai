@@ -1,4 +1,4 @@
-package org.example;
+package org.example.poo;
 
 import java.util.Date;
 

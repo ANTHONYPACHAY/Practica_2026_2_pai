@@ -1,4 +1,4 @@
-package org.example.cadena;
+package org.example.poo.cadena;
 
 public class RunCadena {
 

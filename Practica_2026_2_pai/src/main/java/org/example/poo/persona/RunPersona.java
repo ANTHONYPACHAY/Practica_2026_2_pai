@@ -1,4 +1,4 @@
-package org.example.persona;
+package org.example.poo.persona;
 
 public class RunPersona {
 

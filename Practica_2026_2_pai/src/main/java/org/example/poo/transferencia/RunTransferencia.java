@@ -1,4 +1,4 @@
-package org.example.transferencia;
+package org.example.poo.transferencia;
 
 public class RunTransferencia {
     public static void main(String[] args) {
