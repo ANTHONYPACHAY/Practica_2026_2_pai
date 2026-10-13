@@ -61,7 +61,7 @@ public class ListSimple {
 
         return cantidad;
     }
-public int sumarDatos(){
+    public int sumarDatos(){
         int acumulador = 0;
         Nodo ultimo = this.inicio;
         while(ultimo != null) {
@@ -69,18 +69,18 @@ public int sumarDatos(){
             ultimo = ultimo.getSiguiente();
         }
         return acumulador;
-}
-public int contarNumeros(int n){
-        int contadornum =0;
-    Nodo ultimo = this.inicio;
-    while(ultimo != null) {
-        if(ultimo.getDato() == n) {
-            contadornum ++;
-        }
-
-        ultimo = ultimo.getSiguiente();
     }
-    return contadornum;
-}
+    public int contarNumeros(int n){
+        int contadornum =0;
+        Nodo ultimo = this.inicio;
+        while(ultimo != null) {
+            if(ultimo.getDato() == n) {
+                contadornum ++;
+            }
+
+            ultimo = ultimo.getSiguiente();
+        }
+        return contadornum;
+    }
 
 }
