@@ -12,5 +12,8 @@ public class RunArbolBinario {
 
         arbolBinario.imprimirArbol();
 
+        System.out.println("[Cantidad de elementos]: " + arbolBinario.contarElementos());
+        System.out.println("[Altura]: " + arbolBinario.altura());
+
     }
 }
