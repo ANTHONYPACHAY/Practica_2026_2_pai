@@ -71,4 +71,45 @@ public class ArbolBinario {
         );
     }
 
+    public boolean esPerfecto() {
+        int totalNodos = this.contarElementos();
+        int h = this.altura();
+        return totalNodos == (Math.pow(2, h + 1)) - 1;
+    }
+
+    public boolean esLLeno() {
+        return this.esLLeno_(this.raiz);
+    }
+    public boolean esLLeno_(Nodo actual) {
+        if (actual == null) return true;
+        if (actual.getIzquierdo() == null && actual.getDerecho() == null) return true;
+        if (actual.getIzquierdo() != null && actual.getDerecho() != null) {
+            return this.esLLeno_(actual.getIzquierdo()) && this.esLLeno_(actual.getDerecho());
+        }
+        return false;
+    }
+
+    public boolean esCompleto() {
+        return this.esCompleto_(this.raiz, 0, this.contarElementos());
+    }
+    private boolean esCompleto_(Nodo actual, int indice, int numeroNodos) {
+        if (actual == null) return true;
+        if (indice >= numeroNodos) {
+            return false;
+        }
+        return esCompleto_(actual.getIzquierdo(), 2 * indice + 1, numeroNodos)
+                 && esCompleto_(actual.getDerecho(), 2 * indice + 2, numeroNodos);
+    }
+
+    public boolean esDegenerado() {
+        return this.esDegenerado_(this.raiz);
+    }
+    public boolean esDegenerado_(Nodo actual) {
+        if (actual == null) return true;
+        if (actual.getIzquierdo() != null && actual.getDerecho() != null) return false;
+
+        return this.esDegenerado_(actual.getIzquierdo())
+                && this.esDegenerado_(actual.getDerecho());
+    }
+
 }
