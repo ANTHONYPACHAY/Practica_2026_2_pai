@@ -80,7 +80,7 @@ public class ArbolBinario {
     public boolean esLLeno() {
         return this.esLLeno_(this.raiz);
     }
-    public boolean esLLeno_(Nodo actual) {
+    private boolean esLLeno_(Nodo actual) {
         if (actual == null) return true;
         if (actual.getIzquierdo() == null && actual.getDerecho() == null) return true;
         if (actual.getIzquierdo() != null && actual.getDerecho() != null) {
@@ -104,12 +104,132 @@ public class ArbolBinario {
     public boolean esDegenerado() {
         return this.esDegenerado_(this.raiz);
     }
-    public boolean esDegenerado_(Nodo actual) {
+    private boolean esDegenerado_(Nodo actual) {
         if (actual == null) return true;
         if (actual.getIzquierdo() != null && actual.getDerecho() != null) return false;
 
         return this.esDegenerado_(actual.getIzquierdo())
                 && this.esDegenerado_(actual.getDerecho());
     }
+
+    public void preOrden() {
+        this.preOrden_(this.raiz);
+    }
+
+    private void preOrden_(Nodo actual) {
+        if (actual == null) return;
+        System.out.println(actual.getDato() + "");
+        this.preOrden_(actual.getIzquierdo());
+        this.preOrden_(actual.getDerecho());
+    }
+
+    public void inOrden() {
+        this.inOrden_(this.raiz);
+    }
+
+    private void inOrden_(Nodo actual) {
+        if(actual == null) return;
+        this.inOrden_(actual.getIzquierdo());
+        System.out.println(actual.getDato() + "");
+        this.inOrden_(actual.getDerecho());
+
+    }
+
+    public void postOrden() {
+        this.postOrden_(this.raiz);
+    }
+
+    private void postOrden_(Nodo actual) {
+        if (actual == null) return;
+        this.postOrden_(actual.getIzquierdo());
+        this.postOrden_(actual.getDerecho());
+        System.out.println(actual.getDato() + "");
+    }
+
+    public void rotacionIzquierda() {
+        this.raiz = this.rotacionIzquierda_(this.raiz);
+    }
+
+    private Nodo rotacionIzquierda_(Nodo x) {
+        if (x == null || x.getDerecho() == null) return x;
+
+        // identificar el nodo que va a subir
+        Nodo y = x.getDerecho();
+        // guardar el subarbol que debe reubicarse
+        Nodo aux = y.getIzquierdo();
+        // convierte la raiz anterior en un hijo izquierdo
+        y.setIzquierdo(x);
+        // reconectar con el subarbol
+        x.setDerecho(aux);
+        // devolver la nueva raiz
+        return y;
+    }
+
+    public void rotacionIzquierda(Integer dato) {
+        this.raiz = this.rotacionIzquierda_(this.raiz, dato);
+    }
+
+    private Nodo rotacionIzquierda_(Nodo actual, Integer dato) {
+        if (actual == null) return null;
+        if (dato < actual.getDato()) {
+            actual.setIzquierdo(
+                    this.rotacionIzquierda_(actual.getIzquierdo(), dato)
+            );
+        } else  if (dato > actual.getDato()) {
+            actual.setDerecho(
+                    this.rotacionIzquierda_(actual.getDerecho(), dato)
+            );
+        } else {
+            return this.rotacionIzquierda_(actual);
+        }
+
+        return actual;
+    }
+
+
+    public void rotacionDerecha() {
+        this.raiz = this.rotacionDerecha_(this.raiz);
+    }
+
+    private Nodo rotacionDerecha_(Nodo y) {
+        if (y == null || y.getIzquierdo() == null) return y;
+
+        Nodo x = y.getIzquierdo();
+        Nodo aux = x.getDerecho();
+
+        x.setDerecho(y);
+        y.setIzquierdo(aux);
+
+        return x;
+    }
+
+    public void rotacionDerecha(Integer dato) {
+        this.raiz = this.rotacionDerecha_(this.raiz, dato);
+    }
+    public Nodo rotacionDerecha_(Nodo actual, Integer dato) {
+        if (actual == null) return null;
+        if (dato < actual.getDato()) {
+            actual.setIzquierdo(
+                    this.rotacionDerecha_(actual.getIzquierdo(), dato)
+            );
+        } else if (dato > actual.getDato()) {
+            actual.setDerecho(
+                    this.rotacionDerecha_(actual.getDerecho(), dato)
+            );
+        } else {
+            return this.rotacionDerecha_(actual);
+        }
+        return actual;
+    }
+
+    public Integer factorBalanceo() {
+        return this.factorBalanceo_(this.raiz);
+    }
+
+    private Integer factorBalanceo_(Nodo actual) {
+        if (actual == null) return 0;
+        return this.altura_(actual.getIzquierdo()) - this.altura_(actual.getDerecho());
+    }
+
 
 }
